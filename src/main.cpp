@@ -6,7 +6,7 @@
 #include <ArduinoHttpClient.h>
 
 #define LIGHT A0
-#define LED_GREEN D2
+#define LED_RED D2
 #define LED_BLUE D8
 #define DHTPIN 5 //Pin D1
 DHT dht(DHTPIN, DHT11);
@@ -34,8 +34,8 @@ bool timeout = false;
 int counter = 0;
 
 //Set flask server
-char serverAddress[] = "mongodb://localhost"; //ADD SERVER IP-ADDRESS
-int port = 27017;
+char serverAddress[] = "10.169.167.164"; //WEB SERVER IP-ADDRESS
+int port = 5000; //flask port
 
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, serverAddress, port);
@@ -72,7 +72,7 @@ void setup() {
     delay(2000);
 
     pinMode(LIGHT,INPUT);
-    pinMode(LED_GREEN, OUTPUT);
+    pinMode(LED_RED, OUTPUT);
     pinMode(LED_BLUE, OUTPUT);
 
     Serial.println("Light Level, Temperature, Humidity");
@@ -98,7 +98,7 @@ void loop() {
 
         String jsonString = "";
         JsonObject object = sensor_data.to<JsonObject>();
-        object["humidity"] = humidity;
+        object["Humidity"] = humidity;
         object["Light"] = sunLightHours;
         object["Temperature"] = temp;
         object["Sensor_id"] = "1";
@@ -113,23 +113,29 @@ void loop() {
         //Send data to web server
         String contentType = "app/sensor_data-from-ESP32";
         
-        client.post("/app_json", contentType, postData);
+        client.post("/api/sensors", contentType, postData);
         
         int statusCode = client.responseStatusCode();
         String response = client.responseBody();
 
-        if (statusCode < 300) {
+        if (statusCode > 200 && statusCode < 300) {
             digitalWrite(LED_BLUE, HIGH);
+            Serial.print("Status code: ");
+            Serial.println(statusCode);
+            Serial.print("Response: ");
+            Serial.println(response);
             delay(100);
             digitalWrite(LED_BLUE, LOW);
         }
-
-
-
+        else {
+            digitalWrite(LED_RED, HIGH);
+            Serial.print("Status code: ");
+            Serial.println(statusCode);
+            Serial.print("Response: ");
+            Serial.println(response);
+        }
     }
 
-    digitalWrite(LED_GREEN, LOW);
-    delay(5000);
-    digitalWrite(LED_GREEN, HIGH);
-
+    delay(1000); //Send data every 5s
+    digitalWrite(LED_RED, LOW);
 }
