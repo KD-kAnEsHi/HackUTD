@@ -4,6 +4,7 @@
 #include <ESP8266WiFi.h>
 #include <ArduinoJson.h>
 #include <ArduinoHttpClient.h>
+#include "wifi_authentication.h"
 
 #define LIGHT A0
 #define LED_RED D2
@@ -28,14 +29,17 @@ float lightToSunlight(int lightLevel) {
 }
 
 //Set WIFI Credentials
-const char* ssid = "AADESH-X13";
-const char* pass = "3Xc0]363";
+const char* ssid = Secret_SSID;
+const char* pass = Secret_Password;
 bool timeout = false;
 int counter = 0;
 
 //Set flask server
 //char serverAddress[] = "10.169.167.164"; //WEB SERVER IP-ADDRESS
-char serverAddress[] = "10.169.180.78"; //WEB SERVER IP-ADDRESS
+char serverAddress[] = "10.169.180.78"; //WEB SERVER IP-ADDRESS- Aadesh Laptop
+//char serverAddress[] = "192.168.137.137"; //WEB SERVER IP-ADDRESS- Karl's Laptop
+//char serverAddress[] = ""; //WEB SERVER IP-ADDRESS- Karl's Laptop
+
 int port = 5000; //flask port
 
 WiFiClient wifi;
