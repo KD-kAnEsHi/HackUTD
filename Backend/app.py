@@ -22,12 +22,13 @@ def home():
     return jsonify({
         "message": "Welcome to Sensors API",
         "endpoints": {
-            "GET/POST": "/api/sensors",
-            "PUT/DELETE": "/api/sensors/<id>"
+            "GET/POST": "/api/sensors_db/sensors",
+            "PUT/DELETE": "/api/sensors_db/sensors/<id>"
+
         }
     })
 
-@app.get("/api/sensors")
+@app.get("/api/sensors_db/sensors")
 def get_sensors():
     sensor_id = request.args.get('sensor_id')
     filter = {} if sensor_id is None else {"sensor_id": sensor_id}
@@ -39,7 +40,7 @@ def get_sensors():
     )
     return response
 
-@app.post("/api/sensors")
+@app.post("/api/sensors_db/sensors")
 def add_sensor():
     _json = request.json
     if not _json:
@@ -50,7 +51,7 @@ def add_sensor():
     resp.status_code = 200
     return resp
 
-@app.delete("/api/sensors/<id>")
+@app.delete("/api/sensors_db/sensors/<id>")
 def delete_sensor(id):
     try:
         result = db.sensors.delete_one({'_id': ObjectId(id)})
@@ -63,7 +64,7 @@ def delete_sensor(id):
     except Exception as e:
         return make_response(jsonify({"error": str(e)}), 500)
 
-@app.put("/api/sensors/<id>")
+@app.put("/api/sensors_db/sensors/<id>")
 def update_sensor(id):
     _json = request.json
     if not _json:
