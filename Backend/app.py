@@ -3,8 +3,6 @@ from pymongo import MongoClient
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-import logging
-import pytz
 
 # Load environment variables
 load_dotenv()
@@ -42,9 +40,9 @@ def home():
 def handle_sensors():
     if request.method == 'POST':
         sensor_data = request.json
+
         #Insert current time
-        cst = pytz.timezone('US/Central')
-        sensor_data['timestamp'] = datetime.now(cst)
+        sensor_data['timestamp'] = datetime.now()
         
         # Insert the data into MongoDB
         result = collection.insert_one(sensor_data)
@@ -76,6 +74,18 @@ def handle_sensor(id):
         if result.deleted_count == 0:
             return jsonify({"error": "Sensor not found"}), 404
         return jsonify({"message": "Sensor deleted successfully"}), 200
+    
+#Fetch data from the database for the front-end
+@app.route("/api/get_database", methods=['GET'])
+def fetch_data():
+    #convert json file to list
+    sensor_data = list(db.get_collection('sensors').find({}))
+
+    #Convert Object ID to String for serialization
+    for data in sensor_data:
+        data['_id'] = str(data['_id'])
+
+    return jsonify(sensor_data), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
