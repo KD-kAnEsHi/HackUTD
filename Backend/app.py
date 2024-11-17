@@ -24,7 +24,6 @@ def home():
         "endpoints": {
             "GET/POST": "/api/sensors_db/sensors",
             "PUT/DELETE": "/api/sensors_db/sensors/<id>"
-
         }
     })
 
