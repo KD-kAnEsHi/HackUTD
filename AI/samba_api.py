@@ -41,7 +41,7 @@ while True:
             f"Ideal Humidity: {ideal_humidity}%\n"
             f"Ideal Sunlight: {ideal_sunlight} hours\n"
             f"Sensor Data:\n{sensor_data_str}\n"
-            "Please provide suggestions based on these values (this values are meant to help build the perfect ecossytem for plants in indoor farms to grow)"
+            "This project is about in-door farming "
         )
 
         # Define the request details for SambaNova API
@@ -72,3 +72,20 @@ while True:
         print(f"An error occurred: {str(e)}")
         print("Please try again.")
         continue
+
+
+
+# Compare the model before and after getting the sensor data.
+from MLModel import gb_best_params, best_gb_model, cross_val_mean_accuracy
+
+print()
+print()
+
+os.system("python3 UpdateAndCompare.py")
+
+
+#print("Cross-Validation Mean Accuracy:", cross_val_mean_accuracy)
+#print("Best Parameters:", gb_best_params)
+#print("Ideal Temperature:", ideal_temperature)
+#print("Ideal Humidity:", ideal_humidity)
+#print("Ideal Sunlight:", ideal_sunlight)
