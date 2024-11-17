@@ -26,7 +26,7 @@ while True:
         sensor_data_cursor = collection.find()
         sensor_data_list = list(sensor_data_cursor)
         sensor_data_str = "\n".join([str(doc) for doc in sensor_data_list])
-
+ 
         # Get input from the user
         user_input = input("\nQuestions: ")
         
@@ -35,7 +35,6 @@ while True:
             print("Thank you for using the system. Goodbye!")
             break
 
-        # Combine user input with ideal conditions and sensor data
         combined_prompt = (
             f"User Query: {user_input}\n"
             f"Ideal Temperature: {ideal_temperature}°C\n"
