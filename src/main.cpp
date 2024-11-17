@@ -34,7 +34,8 @@ bool timeout = false;
 int counter = 0;
 
 //Set flask server
-char serverAddress[] = "10.169.167.164"; //WEB SERVER IP-ADDRESS
+//char serverAddress[] = "10.169.167.164"; //WEB SERVER IP-ADDRESS
+char serverAddress[] = "10.169.180.78"; //WEB SERVER IP-ADDRESS
 int port = 5000; //flask port
 
 WiFiClient wifi;
@@ -51,7 +52,7 @@ void setup() {
         delay(500);
         Serial.print(".");
         counter++;
-        if (counter > 30) {
+        if (counter > 60) {
             timeout = true;
             break;
         }
@@ -103,15 +104,16 @@ void loop() {
         object["Temperature"] = temp;
         object["Sensor_id"] = "1";
         object["Location"] = "row 1";
-        object["Enabled"] = "true";
+        object["Enabled"] = true;
         object["Type_sensor"] = "x";
 
         //serialize the object and store it
         String postData;
+        Serial.print(postData);
         serializeJson(sensor_data, postData);
 
         //Send data to web server
-        String contentType = "app/sensor_data-from-ESP32";
+        String contentType = "application/json";
         
         client.post("/api/sensors", contentType, postData);
         
