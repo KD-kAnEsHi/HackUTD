@@ -3,10 +3,8 @@ import requests
 from pymongo import MongoClient
 from MLModel import get_ideal_temperature, get_ideal_humidity, get_ideal_sunlight
 
-# Set the API key directly (for testing purposes)
 api_key = "61b887b1-aa89-4f51-8240-1b740d3e5a13"  # Change this after the event
 
-# Step 1: Fetch Ideal Conditions from AI Model once at startup
 ideal_temperature = get_ideal_temperature()
 ideal_humidity = get_ideal_humidity()
 ideal_sunlight = get_ideal_sunlight()
@@ -41,7 +39,7 @@ while True:
             f"Ideal Humidity: {ideal_humidity}%\n"
             f"Ideal Sunlight: {ideal_sunlight} hours\n"
             f"Sensor Data:\n{sensor_data_str}\n"
-            "This project is about in-door farming "
+            "This project is about in-door farming and we are measuring the most ideal temperature, humidity, and uv sunligth to grow plants"
         )
 
         # Define the request details for SambaNova API
@@ -60,7 +58,6 @@ while True:
             "top_p": 0.1,
         }
 
-        # Make the API call to SambaNova
         response = requests.post(url, headers=headers, json=data)
         if response.status_code == 200:
             print("\nAssistant's Response:")
