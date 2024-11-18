@@ -1,6 +1,6 @@
 # Plant Smarter
-- uses light and temperature sensor data to help plants grow better
-- Uses ML to process data and use Samba Nova's API to suggest plant growth'
+- Uses light and temperature sensor data to help plants grow better
+- Uses ML to process data and use Samba Nova's API to suggest plant growth
 
 https://www.youtube.com/watch?v=0gDY958_tsA&ab_channel=AadeshSenthilkumar
 
