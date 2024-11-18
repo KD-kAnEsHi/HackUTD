@@ -26,10 +26,10 @@ This project taught us a lot about machine learning and how to apply it to real-
 In the future, we plan to add more advanced sensors to track other factors like soil moisture and air quality. We want to create a mobile app that gives users real-time updates and advice about their plants. Our goal is to make the system even smarter by customizing it for specific plant types. We also want to scale this project to larger farms and greenhouses to help more people. Lastly, we’re exploring how to power the sensors with renewable energy, like solar panels, to make the system even more sustainable.
 
 ## Contributors
-Aadesh Senthilkumar - Iot Device (Created an Iot Device which gathers data such as Temperature, Humidity, and Sunlight, and stores it in a database)
+**Aadesh Senthilkumar** - Iot Device (Created an Iot Device which gathers data such as Temperature, Humidity, and Sunlight, and stores it in a database)
 
-Shivani Elitem - Machine Learning Model (Created a Gradient Boosting Model with a 75% accuracy using a dataset from Kaggle and the data from the IoT Device)
+**Shivani Elitem** - Machine Learning Model (Created a Gradient Boosting Model with a 75% accuracy using a dataset from Kaggle and the data from the IoT Device)
 
-Karl Demanou - Backend (Integrated Iot Device Data and ML Model Predictions with SambaNova AI)
+**Karl Demanou** - Backend (Integrated Iot Device Data and ML Model Predictions with SambaNova AI)
 
-Ammar Mohammed - Frontend (Created the front-end interface for the project, displaying the data from the database such as tables and charts, and trying to integrate the SambaNova AI onto the front end)
+**Ammar Mohammed** - Frontend (Created the front-end interface for the project, displaying the data from the database such as tables and charts, and trying to integrate the SambaNova AI onto the front end)
