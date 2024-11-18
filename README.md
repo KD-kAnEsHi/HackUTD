@@ -2,6 +2,8 @@
 - uses light and temperature sensor data to help plants grow better
 - Uses ML to process data and use Samba Nova's API to suggest plant growth'
 
+https://devpost.com/software/plant-smarter#updates
+
 ## Inspiration
 We were inspired by the idea of using technology to help plants grow better while making farming and gardening more efficient and environmentally friendly. Many people struggle with maintaining the right conditions for plants, and we wanted to create a solution that could provide precise recommendations. By combining machine learning and sensors, we saw an opportunity to support sustainable agriculture and make plant care easier for everyone.
 
