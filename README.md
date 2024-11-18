@@ -27,6 +27,9 @@ In the future, we plan to add more advanced sensors to track other factors like 
 
 ## Contributors
 Aadesh Senthilkumar - Iot Device (Created an Iot Device which gathers data such as Temperature, Humidity, and Sunlight, and stores it in a database)
+
 Shivani Elitem - Machine Learning Model (Created a Gradient Boosting Model with a 75% accuracy using a dataset from Kaggle and the data from the IoT Device)
+
 Karl Demanou - Backend (Integrated Iot Device Data and ML Model Predictions with SambaNova AI)
+
 Ammar Mohammed - Frontend (Created the front-end interface for the project, displaying the data from the database such as tables and charts, and trying to integrate the SambaNova AI onto the front end)
